@@ -1,0 +1,7 @@
+
+
+## Features to add to profile.
+
+1. User ability to add sound cloud songs.
+2. Ability to add youtube videos
+3. Ability to add audio in various formats

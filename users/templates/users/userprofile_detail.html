@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% load account %}
+{% load static %}
+
+
+{% block content %}
+
+    <br>
+
+   <h3 class="text-center">Profile Page </h3>
+    <br>
+    <hr>
+    <br>
+
+    <div class="container">
+    <div class="row">
+    <div class="col-md-6 ">
+    <div class="media media-box">
+        {% if user.userprofile.image.url is not None %}
+            <img class="profile_photo .float-right mr-3" src="{{ user.userprofile.image.url }}" alt="">
+            {% else %}
+           <img class="profile_photo .float-right mr-3" src="{% static "img/def_pro.png" %}" alt="">
+        {% endif %}
+                <div class="media-body">
+         <h5 class="mr-3"> {{ user.userprofile.display_name}}</h5>
+    <ul>
+        <li>City:{{ user.userprofile.city  }} </li>
+         <li>Link: {{ user.userprofile.website }}</li>
+         <li>Phone: {{ user.userprofile.phone  }}</li>
+        <li>Country: {{ user.userprofile.country.name }}</li>
+        <li>Description: {{ user.userprofile.description }}</li>
+    </ul>
+    </div>
+
+    </div>
+    </div>
+    </div>
+
+
+
+
+{% if user.is_authenticated %}
+    <a class="btn btn-secondary btn-lg" href="{% url 'profile_edit' pk=user.userprofile.pk %} ">Edit Profile</a>
+ {% endif %}
+</div>
+
+{% endblock %}

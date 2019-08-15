@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% load account %}
+
+
+{% block content %}
+
+
+{% block extrahead %}
+{{ block.super }}
+    {% include "common_audiofield.html" %}
+{% endblock %}
+
+
+{% if user.is_authenticated %}
+<div class="text-center">
+    <br><br>
+    <maquee><h1 >Welcome, back! <span class="text-success">{{ user.username }}</span></h1></maquee>
+     {% else %}
+    <br><br>
+    <div class="text-center">
+    <h1 class="text-center text-grey">Do you wanna <a href="{% url 'signup' %}">sign up? </a></h1>
+
+    <br>
+        <p class="text-grey">How about signing in with your google account. <strong>You data is safe, we promise!!</strong> </p>
+
+    </div>
+{% endif %}
+
+</div>
+{% endblock %}
