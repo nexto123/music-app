@@ -9,6 +9,7 @@ from django.views.generic import (TemplateView, ListView,
                                   UpdateView, DeleteView)
 
 from .forms import CustomUserCreationForm, UserProForm
+from django.contrib import messages
 
 
 
@@ -16,6 +17,7 @@ from .forms import CustomUserCreationForm, UserProForm
 
 
 
+##To send a message to a view ."example is : messages.error(request,'your bla bla bla')"
 
 #Obselete not in use now
 class SignUpView(CreateView):
@@ -30,11 +32,10 @@ class SignUpView(CreateView):
 
 class UserProfileUpdateView(UpdateView):
 
-    models = UserProfile
+    model = UserProfile
     template_name_suffix = '_update_form'
     form_class = UserProForm
     # fields = ('display_name','description', 'website', 'phone', 'country', 'county', 'image', 'created_date')
-
 
     redirect_field_name = '/'
 

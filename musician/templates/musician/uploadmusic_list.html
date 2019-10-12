@@ -1,0 +1,87 @@
+{% extends 'base.html' %}
+
+{% load account %}
+{% load static %}
+
+
+
+{% block content %}
+
+  <div class="square-space"></div>
+
+
+<div class="container">
+    <div class="row">
+
+     {% for songs in uploadmusic_list %}
+        {# card   #}
+         <div class="col-md-3">
+                          <div class="card" style="width:250px">
+                            {% if songs.album_cover %}
+                             <img class="card-img-top" src="{{ songs.album_cover.url }}" alt="Avatar" class="image" alt="Card image" style="width:100%">
+                              {% else %}
+                                <img class="card-img-top" src="{% static 'img/default_album_cover.png' %}" alt="Avatar" class="image" alt="Card image" style="width:100%">
+                              {% endif %}
+                             <div class="card-body">
+                                <h4 class="card-title audio-title">{{ songs.title }}</h4>
+                                <p class="card-text">{{ songs.composer }} ,released song {{ songs.created_date }}.</p>
+{#                                 {% if songs.audio_file %}#}
+{#                                <audio controls src="{{ songs.audio_file.url }}">#}
+{#                                   Your browser does not support the#}
+{#                                   <code>audio</code> element.#}
+{#                                </audio>#}
+{#                                {% else %}#}
+{#                                 <audio controls src="#">#}
+{#                                   Your browser does not support the#}
+{#                                   <code>audio</code> element.#}
+{#                                </audio>#}
+{##}
+{#                                 {% endif %}#}
+
+                             {# modal goes here  #}
+
+                             <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Play all tracks </button>
+                                <!-- Modal -->
+                                <div id="myModal" class="modal fade" role="dialog">
+                                  <div class="modal-dialog">
+
+                                    <!-- Modal content-->
+                                    <div class="modal-content">
+                                      <div class="modal-header">
+
+                                        <h4 class="modal-title"> {{ songs.composer }}</h4>
+                                          <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                      </div>
+                                      <div class="modal-body">
+
+                                          {% if songs.audio_file %}
+                                                <audio controls src="{{ songs.audio_file.url }}" id="audioPlayer">
+                                                   Your browser does not support the
+                                                   <code>audio</code> element.
+                                                </audio>
+                                                {% else %}
+                                                 <audio controls src="#">
+                                                   Your browser does not support the
+                                                   <code>audio</code> element.
+                                                </audio>
+
+                                                 {% endif %}
+
+                                      </div>
+                                      <div class="modal-footer">
+                                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                      </div>
+                                    </div>
+
+                                  </div>
+                                </div>
+
+                             </div>
+                          </div>
+         </div>
+    {% endfor %}
+
+    </div>
+
+</div>
+{% endblock %}

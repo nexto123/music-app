@@ -27,16 +27,15 @@ COUNTY_MULTIPLE_CHOICES = [
 class UserProfile(models.Model):
 
     user = models.OneToOneField(AUTH_USER_MODEL, on_delete=models.CASCADE)
-    display_name = models.CharField(max_length=200, default='')
+    display_name = models.CharField(max_length=100, default='')
     description = models.TextField(max_length=200, default='')
     city = models.CharField(max_length=100, default='')
-    website = models.URLField(default='https//:')
+    website = models.URLField(default='https://')
     country = CountryField(blank_label='(select country)', default='Country')
     county = models.CharField(max_length=150, default='')
     phone = models.IntegerField(default=0)
     image = models.ImageField(upload_to='profile_image', blank=True)
     created_date = models.DateTimeField(default=timezone.now)
-
 
     def get_absolute_url(self):
         return reverse("profile_edit", kwargs={'pk': self.pk})
@@ -56,6 +55,7 @@ class Offer(models.Model):
 def CreateProfile(sender, **kwargs):
     if user_signed_up:
         user_profile = UserProfile.objects.create(user=kwargs['user'])
+
 
 post_save.connect(CreateProfile, sender = User)
 

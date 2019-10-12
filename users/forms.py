@@ -28,7 +28,7 @@ class UserProForm(forms.ModelForm):
         fields = ('image','display_name','website', 'phone', 'country', 'county','description')
 
         widgets = {
-            'image': forms.FileInput(attrs={'class': 'Image-input-field btn btn-secondary bg-white form-control-file text-black '}),
+            'image': forms.FileInput(attrs={'class': 'Image-input-field btn btn-secondary bg-white form-control-file text-black'}),
             'display_name': forms.TextInput(attrs={'class': 'display-input-field'}),
             'description': forms.Textarea(attrs={'class': 'description-input'}),
             'website': forms.TextInput(attrs={'class': 'web-input'}),

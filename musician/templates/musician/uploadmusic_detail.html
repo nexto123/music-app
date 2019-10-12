@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% load account %}
+
+
+
+
+{% block content %}
+
+
+
+<h1>Song Detail Page </h1>
+    <br>
+    <br>
+
+    <p>{{ uploadmusic.title }}</p>
+    <p>{{ uploadmusic.created_date }}</p>
+    <audio src="{{ uploadmusic.audio_file.url }}" controls>Your browser does not support the audio element.</audio>
+
+
+{% endblock %}

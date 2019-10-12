@@ -5,26 +5,57 @@
 {% block content %}
 
 
-{% block extrahead %}
-{{ block.super }}
-    {% include "common_audiofield.html" %}
-{% endblock %}
 
-
+<br><br>
 {% if user.is_authenticated %}
+
 <div class="text-center">
+<br><br>
+
+    <!--------- flash messages ----------------------------->
+
+    {% if messages %}
+       {% for message in messages %}
+
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+              <strong> {{ message }}!</strong>
+              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+
+        {% endfor %}
+    {% endif %}
+
+    <!--------- end flash messages ----------------------------->
+
     <br><br>
-    <maquee><h1 >Welcome, back! <span class="text-success">{{ user.username }}</span></h1></maquee>
+    <maquee><h3 >This is a temporal home page!</h3></maquee>
      {% else %}
     <br><br>
-    <div class="text-center">
-    <h1 class="text-center text-grey">Do you wanna <a href="{% url 'signup' %}">sign up? </a></h1>
 
+    {% if messages %}
+       {% for message in messages %}
+
+            <div class=" text-center alert alert-success alert-dismissible fade show" role="alert">
+              <strong> {{ message }}!</strong>
+              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+
+        {% endfor %}
+    {% endif %}
+
+
+
+        <div class="text-center">
+        <h1 class="text-center text-grey">Do you wanna <a href="{% url 'signup' %}">sign up? </a></h1>
     <br>
         <p class="text-grey">How about signing in with your google account. <strong>You data is safe, we promise!!</strong> </p>
 
     </div>
-{% endif %}
 
-</div>
+{% endif %}
+    </div>
 {% endblock %}

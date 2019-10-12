@@ -47,15 +47,16 @@ INSTALLED_APPS = [
     'django_countries',
     'shop',
     'users',
-    'musician',
+
     'crispy_forms',
 
     'allauth', # new
     'allauth.account', # new
     'allauth.socialaccount', # new
     'allauth.socialaccount.providers.google', # new
-    'captcha',
     'audiofield',
+    'musician',
+    'multiselectfield',
 
 ]
 

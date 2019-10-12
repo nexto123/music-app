@@ -5,6 +5,7 @@
 
 
 {% block content %}
+    <div class="square-space"></div>
 <div class="container ">
 
     <div class="row">
@@ -15,7 +16,7 @@
 
      <div class="signup-box">
          {% if user.userprofile.image.url is not None %}
-            <img class="profile_photo " src="{{ user.userprofile.image.url }}" alt="">
+            <img class="profile_photo " src="{{ userprofile.image.url }}" alt="">
             {% else %}
            <img class="profile_photo " src="{% static "img/def_pro.png" %}" alt="">
         {% endif %}
@@ -23,15 +24,17 @@
         <br>
         <br>
             <p>City:{{ user.userprofile.display_name  }} </p>
-              <p>City:{{ user.userprofile.country.name  }} </p>
-            <p>City:{{ user.userprofile.description  }} </p>
+              <p>City:{{ user.userprofile.country.name }} </p>
+            <p>City:{{ user.userprofile.description }} </p>
+
         </div>
 
      <br>
      <hr>
       <!---------------------spaces-------------------------------->
          <div class="signup-box">
-             <p><a href="#">Link to upload your song </a></p>
+{#             <p><a href="{% url 'upload_music'%}">upload your song</a></p>#}
+             <p><a href="{% url 'song_update' pk=user.uploadmusic.pk %}">Upload Songs</a></p>
               <p><a href="#">Link to Add your Youtube videos </a></p>
             <p><a href="#">Link to Sound Cloud</a></p>
         </div>
@@ -59,17 +62,7 @@
 </div>
 
 </div>
-
-
-
-
-
-
-
-
-
-
-
+</div>
 
 
 

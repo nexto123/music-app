@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+{% load account %}
+{% load static %}
+
+{% block content %}
+<!------------------------- Banner starts -------------->
+<div style="position: relative;top:-350px;"></div>
+<header >
+<div class="container heading-box">
+            <h1 class="text-center heading-text">WESTLIFE IS BACK 2019<span><i class="fas fa-trademark"></i></span></h1>
+            <div class="svg-bar">
+               <svg width="100%" height="100%" viewBox="0 0 61 4" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:1.41421;">
+                  <g transform="matrix(1,0,0,1,-140.354,-164.935)">
+                     <g transform="matrix(0.194733,0,0,0.146669,109.873,134.309)">
+                        <rect x="156.53" y="208.809" width="311.709" height="4.136" style="fill:#ddd; max-width: 40px;"/>
+                     </g>
+                  </g>
+               </svg>
+            </div>
+            <p class="text-center"><strong class="tours">UPCOMING EUROPEAN TOURS</strong></p>
+            <p class="text-center"><strong class="tours"> <span class="hvr-underline-reveal">SAN FRANCISCO</span> | <span class="hvr-underline-reveal">LONDON</span> | <span class="hvr-underline-reveal">CAPE TOWN</span> | <span class="hvr-underline-reveal">BEIJING</span> | <span class="hvr-underline-reveal">PARIS</span> | <span class="hvr-underline-reveal"> NEWYORK</span></strong></p>
+            <p class="text-center"><strong class="tours"> WWW.WESTFEST.EU</strong></p>
+            <p class="text-center"><a href="#cities"><i class="fas fa-angle-down animated bounce "></i></a></p>
+            <p class="text-center apps"><a href="#cities"><img class="app" src="assets/img/US-UK_Apple_Music_Watch_on_Solid_Lockup_wht_RGB.svg"><img class="spot" style="width:98px; height:35px;" src="assets/img/spotify.png"></a></p>
+         </div>
+</header>
+<div class="square-space"></div>
+
+<div class="container">
+    <div class="row">
+
+     {% for profiles in userprofile_list %}
+        {# card   #}
+         <div class="col-md-3">
+                          <div class="card" style="width:250px">
+                            {% if profiles.image %}
+                             <img class="card-img-top" src="{{ profiles.image.url }}" alt="Avatar" class="image" alt="Card image" style="width:100%">
+                              {% else %}
+                                <img class="card-img-top" src="{% static "img/def_pro.png" %}" alt="Avatar" class="image" alt="Card image" style="width:100%">
+                              {% endif %}
+                             <div class="card-body">
+                                <h4 class="card-title audio-title">{{ profiles.display_name|truncatechars:15  }}</h4>
+                                <p class="card-text">{{ profiles.description }},released song {{ songs.created_date }}.</p>
+
+                             </div>
+                          </div>
+         </div>
+    {% endfor %}
+
+
+    </div>
+
+</div>
+
+
+
+{% endblock %}
